@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage'
 import { Container } from 'react-bootstrap'
 import NewsPage from './pages/NewsPage'
 import CoinPage from './pages/CoinPage'
+import PricesPage from './pages/PricesPage'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             path={'/coins/:id'}
             render={(props) => <CoinPage {...props} />}
           />
+          <Route to="/prices" component={PricesPage} />
           {/* <Route path="/coins/:id" component={CoinPage} exact /> */}
         </Switch>
       </Container>
