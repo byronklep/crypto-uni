@@ -20,3 +20,9 @@
   padding-top: 10px;
   color: #11d811;
 }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
