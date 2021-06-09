@@ -35,7 +35,11 @@ const Coin = ({ match }) => {
         </Link>
       </Container>
       <Card>
-        <Card.Title>{coin.name}</Card.Title>
+        <div className="d-flex justify-content-between">
+          <Card.Title>{coin.name}</Card.Title>
+          <img src={coin.iconUrl} height={30} width={30} alt={coin.name} />
+        </div>
+
         <Card.Body>
           <ListGroup>
             <ListGroupItem>Rank: {coin.rank}</ListGroupItem>
@@ -43,10 +47,15 @@ const Coin = ({ match }) => {
             <ListGroupItem>Price: {coin.price}</ListGroupItem>
             <ListGroupItem>{coin.description}</ListGroupItem>
           </ListGroup>
-          {/* <div className="d-flex justify-content-between">
-            <a href={coin.links[0].url}>{coin.links[0].url}</a>
-            <a href={coin.links[1].url}>{coin.links[1].url}</a>
-          </div> */}
+          <div className="text-center">
+            <a href={coin.websiteUrl}>{coin.websiteUrl}</a>
+            {/* {Array.coin.links.map((l) => (
+              <>
+                <a href={l.url}>{l.url}</a>
+                <h5>{l.name}</h5>
+              </>
+            ))} */}
+          </div>
         </Card.Body>
       </Card>
     </div>
