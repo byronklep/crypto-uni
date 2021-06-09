@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const Coin = ({ item }) => {
   var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -12,7 +14,12 @@ const Coin = ({ item }) => {
     <>
       <tr key={item.id}>
         <td>{item.rank}</td>
-        <td>{item.name}</td>
+        <Link to={`/coins/${item.id}`}>
+          <div>
+            <td>{item.name}</td>
+          </div>
+        </Link>
+
         <td>
           <img src={item.iconUrl} height={30} width={30} alt="icon" />
         </td>
