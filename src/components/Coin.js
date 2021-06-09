@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Container, Card, ListGroup, ListGroupItem } from 'react-bootstrap'
+import {
+  Container,
+  Card,
+  ListGroup,
+  ListGroupItem,
+  Row,
+  Col,
+} from 'react-bootstrap'
 import { Link, withRouter } from 'react-router-dom'
+import Chart from './Chart'
 
 const Coin = ({ match }) => {
   const [coin, setCoin] = useState({})
+  const [history, setHistory] = useState([])
 
   useEffect(() => {
     const options = {
@@ -21,6 +30,27 @@ const Coin = ({ match }) => {
       .then(function (response) {
         // console.log(response.data.data.coin)
         setCoin(response.data.data.coin)
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
+  }, [match])
+
+  useEffect(() => {
+    const options = {
+      method: 'GET',
+      url: `https://coinranking1.p.rapidapi.com/coin/${match.params.id}/history/7d`,
+      headers: {
+        'x-rapidapi-key': 'f53ec3ed8fmsh56cc4f9c74af0edp18b789jsn7fb5469ef1fc',
+        'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
+      },
+    }
+
+    axios
+      .request(options)
+      .then(function (response) {
+        // console.log(response.data.data.history)
+        setHistory(response.data.data.history)
       })
       .catch(function (error) {
         console.error(error)
@@ -58,6 +88,16 @@ const Coin = ({ match }) => {
           </div>
         </Card.Body>
       </Card>
+      <Container>
+        <Row>
+          <Col>
+            {/* {history.map((h, id) => (
+              <Line key={id}>{h.price}</Line>
+            ))} */}
+            <Chart history={history} />
+          </Col>
+        </Row>
+      </Container>
     </div>
   )
 }
