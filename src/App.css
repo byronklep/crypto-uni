@@ -10,3 +10,13 @@
 .cl-jumbo {
   background-color: #ffffff;
 }
+
+.red {
+  padding-top: 10px;
+  color: #f00606;
+}
+
+.green {
+  padding-top: 10px;
+  color: #11d811;
+}

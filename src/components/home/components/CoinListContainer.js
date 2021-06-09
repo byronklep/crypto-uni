@@ -13,7 +13,7 @@ import {
 import Coin from './Coin'
 
 const CoinListContainer = () => {
-  const [coins, setCoins] = useState([])
+  const [items, setItems] = useState([])
   const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState('')
 
@@ -21,18 +21,18 @@ const CoinListContainer = () => {
     setLoading(true)
     const options = {
       method: 'GET',
-      url: 'https://coingecko.p.rapidapi.com/coins/list',
+      url: 'https://coinranking1.p.rapidapi.com/coins',
       headers: {
         'x-rapidapi-key': 'f53ec3ed8fmsh56cc4f9c74af0edp18b789jsn7fb5469ef1fc',
-        'x-rapidapi-host': 'coingecko.p.rapidapi.com',
+        'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
       },
     }
 
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data)
-        setCoins(response.data)
+        console.log(response.data.data.coins)
+        setItems(response.data.data.coins)
         setLoading(false)
       })
       .catch(function (error) {
@@ -44,8 +44,8 @@ const CoinListContainer = () => {
     setSearch(e.target.value)
   }
 
-  const filteredCoins = coins.filter((coin) => {
-    return coin.name.toLowerCase().includes(search.toLocaleLowerCase())
+  const filteredCoins = items.filter((item) => {
+    return item.name.toLowerCase().includes(search.toLocaleLowerCase())
   })
 
   if (loading) {
@@ -72,13 +72,18 @@ const CoinListContainer = () => {
         <Table striped bordered hover responsive>
           <thead>
             <tr>
+              <th>Rank</th>
               <th>Name</th>
+              <th>Icon</th>
               <th>Symbol</th>
+              <th>Change</th>
+              <th>Price</th>
+              <th>Cap</th>
             </tr>
           </thead>
           <tbody>
-            {filteredCoins.map((coin, id) => (
-              <Coin key={id} coin={coin} />
+            {filteredCoins.map((item, id) => (
+              <Coin key={id} item={item} />
             ))}
           </tbody>
         </Table>
