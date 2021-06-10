@@ -53,7 +53,7 @@ const CoinListContainer = () => {
   }
   return (
     <>
-      <Container>
+      <Container className='wrapper'>
         <Row>
           <Col className="justify-content-lg-center">
             <Jumbotron className="cl-jumbo" fluid>

@@ -9,12 +9,11 @@
 }
 
 .spinner {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: fixed;
+  z-index: 1031;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 body {
@@ -36,10 +35,22 @@ body {
 }
 
 .footer {
-  position: absolute;
-
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 85px;
   width: 100%;
 }
+
+/* .footer {
+  position: fixed;
+  height: 50px;
+  background-color: red;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+
+} */
 
 .coin-card {
   border: none;

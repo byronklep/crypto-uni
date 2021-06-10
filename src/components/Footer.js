@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <div>
-      <footer className="navbar-sticky bg-light text-center text-lg-start">
+      {/* <footer className="footer bg-light text-center text-lg-start">
         <div className="container p-4">
           <div className="row">
             <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
@@ -114,17 +114,17 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <div
-          className="text-center p-3"
-          style={{ backgrounColor: 'rgba(0, 0, 0, 0.2)' }}>
-          2021 ©
-          <a className="text-dark ml-1" href="/">
-            Crypto-Verse
-          </a>
-        </div>
-      </footer>
+      <div
+        className="text-center p-3"
+        style={{ backgrounColor: 'rgba(0, 0, 0, 0.2)' }}>
+        2021 ©
+        <a className="text-dark ml-1" href="/">
+          Crypto-Verse
+        </a>
+      </div>
+      {/* </footer> */}
     </div>
   )
 }
