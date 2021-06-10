@@ -13,7 +13,7 @@ const NewsListItem = ({ n }) => {
         <Col>
           <div className='container'>
             <strong>
-              <h4>{n.title}</h4>
+              <h4 className='title'>{n.title}</h4>
             </strong>
             <p> {n.body}</p>
             <a href={n.url} target='_blank' without rel='noreferrer'>

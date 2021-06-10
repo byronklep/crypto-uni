@@ -57,7 +57,7 @@ const CoinListContainer = () => {
         <Row>
           <Col className="justify-content-lg-center">
             <Jumbotron className="cl-jumbo" fluid>
-              <h1 className="text-center">Search a Crypto Currency</h1>
+              <h1 className="text-center title">Search a Crypto Currency</h1>
             </Jumbotron>
             <Form>
               <FormControl

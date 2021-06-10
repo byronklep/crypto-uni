@@ -5,7 +5,9 @@ const Header = () => {
     <>
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="/">Crypto Universe</Navbar.Brand>
+          <Navbar.Brand className="title" href="/">
+            Crypto-Verse
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">

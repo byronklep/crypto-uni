@@ -30,7 +30,7 @@ const NewsContainer = () => {
   return (
     <div className="container mt-3 text-center">
       <Jumbotron className="cl-jumbo" fluid>
-        <h1 className="">Crypto News</h1>
+        <h1 className="title">Crypto News</h1>
       </Jumbotron>
 
       <Row>
