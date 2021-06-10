@@ -16,6 +16,15 @@ const Coin = ({ match }) => {
   const [coin, setCoin] = useState({})
   const [history, setHistory] = useState([])
 
+  var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+
+    // These options are needed to round to whole numbers if that's what you want.
+    //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+    //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+  })
+
   useEffect(() => {
     const options = {
       method: 'GET',
@@ -92,16 +101,22 @@ const Coin = ({ match }) => {
                   <strong>Rank:</strong> {coin.rank}
                 </ListGroupItem>
                 <ListGroupItem>
-                  <strong>Total Supply:</strong> {coin.totalSupply}
+                  <strong>Price:</strong> {formatter.format(coin.price)}
                 </ListGroupItem>
                 <ListGroupItem>
-                  <strong>Price:</strong> {coin.price}
+                  <strong>Volume: </strong>$
+                  {!coin.volume ? '' : coin.volume.toLocaleString()}
                 </ListGroupItem>
                 <ListGroupItem>
-                  <strong>Volume:</strong> {coin.volume}
+                  <strong>Circulating Supply:</strong>{' '}
+                  {!coin.circulatingSupply
+                    ? ''
+                    : coin.circulatingSupply.toLocaleString()}{' '}
+                  BTC
                 </ListGroupItem>
                 <ListGroupItem>
-                  <strong>Market Cap:</strong> {coin.marketCap}
+                  <strong>Market Cap: </strong> $
+                  {!coin.marketCap ? '' : coin.marketCap.toLocaleString()}
                 </ListGroupItem>
               </ListGroup>
               <Card.Link className="text-center">

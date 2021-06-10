@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { LinkContainer } from 'react-router-bootstrap'
 
 const Coin = ({ item }) => {
   var formatter = new Intl.NumberFormat('en-US', {
@@ -13,17 +13,19 @@ const Coin = ({ item }) => {
   return (
     <>
       <tr key={item.id}>
-        <td>{item.rank}</td>
-        <Link to={`/coins/${item.id}`}>
-          <div>
-            <td>{item.name}</td>
-          </div>
-        </Link>
+        <td>#{item.rank}</td>
+        <LinkContainer style={{ cursor: 'pointer' }} to={`/coins/${item.id}`}>
+          <td>{item.name}</td>
+        </LinkContainer>
 
         <td>
-          <img src={item.iconUrl} height={30} width={30} alt="icon" />
+          <LinkContainer style={{ cursor: 'pointer' }} to={`/coins/${item.id}`}>
+            <img src={item.iconUrl} height={30} width={30} alt="icon" />
+          </LinkContainer>
         </td>
-        <td>{item.symbol}</td>
+        <LinkContainer style={{ cursor: 'pointer' }} to={`/coins/${item.id}`}>
+          <td>{item.symbol}</td>
+        </LinkContainer>
         <td>
           {item.change < 0 ? (
             <p className="red">{item.change.toFixed(2)}%</p>
