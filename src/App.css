@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@500&family=Mulish&display=swap');
 
+@import url('https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css');
+
 * {
   font-family: 'Mulish', sans-serif;
 }
@@ -8,16 +10,19 @@
   font-family: 'Baloo Tammudu 2', cursive;
 }
 
+.heroBanner {
+  min-height: 80vh;
+  width: 100% !important;
+  position: relative;
+  padding-bottom: 180px;
+}
+
 .spinner {
   position: fixed;
   z-index: 1031;
-  top: 50%;
+  top: 90vh;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-body {
-  height: 100vh;
 }
 
 .cl-jumbo {
