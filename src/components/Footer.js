@@ -121,7 +121,7 @@ const Footer = () => {
           style={{ backgrounColor: 'rgba(0, 0, 0, 0.2)' }}>
           2021 ©
           <a className="text-dark ml-1" href="/">
-            Crypto Uni
+            Crypto Universe
           </a>
         </div>
       </footer>

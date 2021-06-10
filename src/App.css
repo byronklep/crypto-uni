@@ -26,3 +26,10 @@
   bottom: 0;
   width: 100%;
 }
+
+.coin-card {
+  border: none;
+}
+.coin-list {
+  border: none;
+}

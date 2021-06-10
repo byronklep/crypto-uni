@@ -7,6 +7,7 @@ import {
   ListGroupItem,
   Row,
   Col,
+  Spinner,
 } from 'react-bootstrap'
 import { Link, withRouter } from 'react-router-dom'
 import Chart from './Chart'
@@ -57,51 +58,98 @@ const Coin = ({ match }) => {
       })
   }, [match])
 
+  // const strippedString = coin.description.replace(/(<([^>]+)>)/gi, '')
+
   return (
     <div>
       <Container>
-        <Link className="btn btn-primary" to="/">
+        <Link className="btn btn-light" to="/">
           Go Back
         </Link>
-      </Container>
-      <Card>
-        <div className="d-flex justify-content-between">
-          <Card.Title>{coin.name}</Card.Title>
-          <img src={coin.iconUrl} height={30} width={30} alt={coin.name} />
-        </div>
 
-        <Card.Body>
-          <ListGroup>
-            <ListGroupItem>Rank: {coin.rank}</ListGroupItem>
-            <ListGroupItem>Total Supply: {coin.totalSupply}</ListGroupItem>
-            <ListGroupItem>Price: {coin.price}</ListGroupItem>
-            <ListGroupItem>{coin.description}</ListGroupItem>
-          </ListGroup>
-          <div className="text-center">
-            <a href={coin.websiteUrl}>{coin.websiteUrl}</a>
-            <hr />
-            {/* {console.log(coin.links)} */}
-            <h3>Links</h3>
-            {!coin.links
-              ? ''
-              : Object.keys(coin.links).map((key, index) => (
+        <Row>
+          <Col className="text-center m-5">
+            <h1 className="my-3">{coin.name}</h1>
+            <img src={coin.iconUrl} height={130} width={130} alt={coin.name} />
+          </Col>
+        </Row>
+        <Row>
+          <Col className="mx-auto" lg={8}>
+            <p>
+              {!coin.description ? (
+                <Spinner className="spinner" animation="grow" variant="info" />
+              ) : (
+                coin.description.replace(/<(?:.|\n)*?>/gm, '')
+              )}
+            </p>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="align-self-center">
+            <Card className="coin-card" body>
+              <ListGroup variant="flush">
+                <ListGroupItem>
+                  <strong>Rank:</strong> {coin.rank}
+                </ListGroupItem>
+                <ListGroupItem>
+                  <strong>Total Supply:</strong> {coin.totalSupply}
+                </ListGroupItem>
+                <ListGroupItem>
+                  <strong>Price:</strong> {coin.price}
+                </ListGroupItem>
+                <ListGroupItem>
+                  <strong>Volume:</strong> {coin.volume}
+                </ListGroupItem>
+                <ListGroupItem>
+                  <strong>Market Cap:</strong> {coin.marketCap}
+                </ListGroupItem>
+              </ListGroup>
+              <Card.Link className="text-center">
+                {' '}
+                <a href={coin.websiteUrl} target="_blank" rel="noreferrer">
+                  {coin.websiteUrl}
+                </a>
+              </Card.Link>
+            </Card>
+          </Col>
+          <Col>
+            <div className="text-center">
+              {/* {console.log(coin.links)} */}
+              <h3>Links</h3>
+              {!coin.links ? (
+                <Spinner className="spinner" animation="grow" variant="info" />
+              ) : (
+                Object.keys(coin.links).map((key, index) => (
                   <div key={index}>
-                    <a href={coin.links[key].url}>{coin.links[key].url}</a>
+                    <a
+                      href={coin.links[key].url}
+                      target="_blank"
+                      rel="noreferrer">
+                      {coin.links[key].url}
+                    </a>
                   </div>
-                ))}
-            <hr />
-            <h3>Social</h3>
-            {!coin.socials
-              ? ''
-              : Object.keys(coin.socials).map((key, index) => (
+                ))
+              )}
+              <hr />
+              <h3>Social</h3>
+              {!coin.socials ? (
+                <Spinner className="spinner" animation="grow" variant="info" />
+              ) : (
+                Object.keys(coin.socials).map((key, index) => (
                   <div key={index}>
-                    <a href={coin.socials[key].url}>{coin.socials[key].url}</a>
+                    <a
+                      href={coin.socials[key].url}
+                      target="_blank"
+                      rel="noreferrer">
+                      {coin.socials[key].url}
+                    </a>
                   </div>
-                ))}
-          </div>
-        </Card.Body>
-      </Card>
-      <Container>
+                ))
+              )}
+            </div>
+          </Col>
+        </Row>
+
         <Row>
           <Col className="mt-4 text-center">
             <h3>Current Price</h3>
