@@ -7,10 +7,10 @@ import {
   ListGroupItem,
   Row,
   Col,
-  Spinner,
 } from 'react-bootstrap'
 import { Link, withRouter } from 'react-router-dom'
 import Chart from './Chart'
+import Skeleton from 'react-loading-skeleton'
 
 const Coin = ({ match }) => {
   const [coin, setCoin] = useState({})
@@ -86,7 +86,7 @@ const Coin = ({ match }) => {
           <Col className="mx-auto" lg={8}>
             <p>
               {!coin.description ? (
-                <Spinner className="spinner" animation="grow" variant="info" />
+                <Skeleton count={5} />
               ) : (
                 coin.description.replace(/<(?:.|\n)*?>/gm, '')
               )}
@@ -132,7 +132,7 @@ const Coin = ({ match }) => {
               {/* {console.log(coin.links)} */}
               <h3>Links</h3>
               {!coin.links ? (
-                <Spinner className="spinner" animation="grow" variant="info" />
+                <Skeleton count={5} />
               ) : (
                 Object.keys(coin.links).map((key, index) => (
                   <div key={index}>
@@ -148,7 +148,7 @@ const Coin = ({ match }) => {
               <hr />
               <h3>Social</h3>
               {!coin.socials ? (
-                <Spinner className="spinner" animation="grow" variant="info" />
+                <Skeleton count={5} />
               ) : (
                 Object.keys(coin.socials).map((key, index) => (
                   <div key={index}>
