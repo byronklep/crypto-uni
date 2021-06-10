@@ -6,6 +6,10 @@
   font-family: 'Mulish', sans-serif;
 }
 
+a:link {
+  text-decoration: none;
+}
+
 .title {
   font-family: 'Baloo Tammudu 2', cursive;
 }
@@ -39,13 +43,13 @@
   color: #11d811;
 }
 
-.footer {
+/* .footer {
   position: fixed;
   left: 0px;
   bottom: 0px;
   height: 85px;
   width: 100%;
-}
+} */
 
 /* .footer {
   position: fixed;
