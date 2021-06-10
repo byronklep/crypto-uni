@@ -79,21 +79,32 @@ const Coin = ({ match }) => {
           </ListGroup>
           <div className="text-center">
             <a href={coin.websiteUrl}>{coin.websiteUrl}</a>
-            {/* {Array.coin.links.map((l) => (
-              <>
-                <a href={l.url}>{l.url}</a>
-                <h5>{l.name}</h5>
-              </>
-            ))} */}
+            <hr />
+            {/* {console.log(coin.links)} */}
+            <h3>Links</h3>
+            {!coin.links
+              ? ''
+              : Object.keys(coin.links).map((key, index) => (
+                  <div key={index}>
+                    <a href={coin.links[key].url}>{coin.links[key].url}</a>
+                  </div>
+                ))}
+            <hr />
+            <h3>Social</h3>
+            {!coin.socials
+              ? ''
+              : Object.keys(coin.socials).map((key, index) => (
+                  <div key={index}>
+                    <a href={coin.socials[key].url}>{coin.socials[key].url}</a>
+                  </div>
+                ))}
           </div>
         </Card.Body>
       </Card>
       <Container>
         <Row>
-          <Col>
-            {/* {history.map((h, id) => (
-              <Line key={id}>{h.price}</Line>
-            ))} */}
+          <Col className="mt-4 text-center">
+            <h3>Current Price</h3>
             <Chart history={history} />
           </Col>
         </Row>
